@@ -1,0 +1,5 @@
+_work/
+.vercel/
+Thumbs.db
+desktop.ini
+.DS_Store

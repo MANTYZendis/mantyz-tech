@@ -1,0 +1,239 @@
+/* ==========================================================
+   MANTYZ — things I build
+   Tmavý terminálový podklad, monospace jako nosný prvek.
+   Barvy vychází z tvého tech loga (azurová + teplá oranžová).
+   Vše se dá přenastavit dole v :root.
+   ========================================================== */
+
+:root{
+  --pozadi:#080a0e;
+  --panel:#0f131a;
+  --panel-2:#141922;
+  --linka:#1e2530;
+  --linka-svetla:#2b3542;
+
+  --text:#dfe5ec;
+  --text-2:#8d99a8;
+  --text-3:#5d6875;
+
+  --azur:#3ad7cd;        /* hlavni akcent */
+  --oranz:#ff9f4a;       /* druhy akcent */
+  --zelena:#5ddc7a;      /* stav: hotovo */
+
+  --max:980px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--pozadi);
+  color:var(--text);
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:17px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+a{color:inherit}
+
+/* Jemná mřížka na pozadí — odkaz na terminál, ale ať to nekřičí. */
+.mrizka{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--linka) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linka) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.30;
+  mask-image:radial-gradient(90% 70% at 50% 0%, #000 0%, transparent 75%);
+}
+.hdr,main,.pata{position:relative;z-index:1}
+
+.obal{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.obal-uzky{max-width:680px}
+
+/* ---------- HLAVIČKA ---------- */
+.hdr{
+  position:sticky;top:0;z-index:40;
+  background:rgba(8,10,14,.84);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linka);
+}
+.hdr-in{
+  max-width:var(--max);margin:0 auto;padding:15px 24px;
+  display:flex;align-items:center;gap:22px;
+}
+.brand{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-weight:600;font-size:1.02rem;letter-spacing:.14em;
+  text-decoration:none;
+}
+.brand::before{content:"[ ";color:var(--azur)}
+.brand::after{content:" ]";color:var(--azur)}
+
+.nav{margin-left:auto;display:flex;gap:24px}
+.nav a{
+  font-family:'IBM Plex Mono',monospace;font-size:.86rem;
+  text-decoration:none;color:var(--text-2);transition:color .2s;
+}
+.nav a:hover{color:var(--azur)}
+
+/* ---------- SPOLEČNÉ ---------- */
+.prompt,.nadpisek{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;color:var(--text-3);margin:0 0 16px;letter-spacing:.02em;
+}
+.znak{color:var(--azur);margin-right:6px}
+
+h1{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;
+  font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.06;letter-spacing:-.03em;
+  margin:0 0 26px;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--azur)}
+h1 em:last-of-type{color:var(--oranz)}
+
+h2{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;
+  font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;
+  margin:0 0 22px;
+}
+h3{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:1.06rem;letter-spacing:.01em;margin:0;
+}
+
+.lead{font-size:clamp(1.02rem,1.7vw,1.16rem);color:var(--text-2);max-width:54ch;margin:0 0 38px}
+.lead-maly{color:var(--text-2);margin:0 0 30px}
+
+.sekce{padding:clamp(56px,8vw,96px) 0}
+.sekce-ram{border-block:1px solid var(--linka)}
+.sekce p{color:var(--text-2)}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(58px,10vw,120px) 0 clamp(50px,7vw,80px)}
+.fakta{display:flex;flex-wrap:wrap;gap:34px}
+.fakt{display:flex;flex-direction:column;gap:2px}
+.fakt .k{
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--text-3);
+}
+.fakt .v{font-size:.96rem;font-weight:500}
+
+/* ---------- KARTY ---------- */
+.karta{
+  background:var(--panel);
+  border:1px solid var(--linka);
+  padding:26px 24px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.karta-hlavni{
+  border-left:2px solid var(--azur);
+  margin-bottom:20px;
+}
+.karta-hlava{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.karta-shrnuti{margin:0;color:var(--text)!important;font-size:1.04rem}
+.karta p{margin:0;font-size:.97rem}
+
+.stav{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 9px;border:1px solid var(--linka-svetla);
+}
+.stav-hotovo{color:var(--zelena)}
+.stav-bezi{color:var(--oranz)}
+.stav-plan{color:var(--text-3)}
+
+.detail{display:flex;flex-direction:column;gap:14px;
+  padding-top:4px;border-top:1px solid var(--linka)}
+.detail p{margin:0}
+
+.body{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.body li{position:relative;padding-left:22px;color:var(--text-2);font-size:.95rem}
+.body li::before{
+  content:"–";position:absolute;left:2px;color:var(--azur);
+  font-family:'IBM Plex Mono',monospace;
+}
+
+.tagy{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.tagy span{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+  color:var(--text-2);background:var(--panel-2);
+  border:1px solid var(--linka);padding:3px 9px;
+}
+
+.odkaz{
+  margin-top:auto;align-self:flex-start;
+  font-family:'IBM Plex Mono',monospace;font-size:.86rem;
+  text-decoration:none;color:var(--azur);
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.odkaz:hover{border-bottom-color:var(--azur)}
+
+.mrizka-karet{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.karta-prazdna{border-style:dashed;background:transparent}
+.karta-prazdna h3{color:var(--text-2)}
+/* Doplňující poznámka v kartě — proč je projekt zajímavý technicky. */
+.karta-pozn{
+  font-size:.9rem!important;color:var(--text-3)!important;
+  padding-top:12px;border-top:1px solid var(--linka);
+}
+
+/* ---------- ABOUT ---------- */
+.sekce-ram p{margin:0 0 18px}
+.sekce-ram p:last-child{margin-bottom:0}
+
+/* ---------- KONTAKT ---------- */
+.odkazy{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.kk{
+  display:flex;flex-direction:column;gap:4px;text-decoration:none;
+  background:var(--panel);border:1px solid var(--linka);
+  padding:20px 22px;transition:border-color .2s,transform .12s;
+}
+.kk:hover{border-color:var(--azur);transform:translateY(-2px)}
+.kk-k{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);
+}
+.kk-v{font-size:.95rem;font-weight:500;word-break:break-all}
+
+/* ---------- PATIČKA ---------- */
+.pata{padding:32px 0;border-top:1px solid var(--linka)}
+.pata .obal{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pata-brand{font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.12em}
+.pata-txt{color:var(--text-3);font-size:.88rem;font-family:'IBM Plex Mono',monospace}
+
+/* ---------- MOBIL ---------- */
+@media (max-width:620px){
+  .hdr-in{gap:14px}
+  .nav{gap:16px}
+  .nav a{font-size:.8rem}
+  .fakta{gap:22px}
+  .mrizka{background-size:44px 44px}
+}
+
+/* ---------- SVĚTLÝ REŽIM ----------
+   Web je záměrně tmavý (terminál), ale kdo má v systému světlý režim
+   a citlivé oči, dostane čitelnější variantu. */
+@media (prefers-color-scheme:light){
+  :root{
+    --pozadi:#f4f6f8;
+    --panel:#ffffff;
+    --panel-2:#eef1f4;
+    --linka:#dde3e9;
+    --linka-svetla:#c6d0d9;
+    --text:#111820;
+    --text-2:#4d5a68;
+    --text-3:#77838f;
+    --azur:#0d8f86;
+    --oranz:#c96a12;
+    --zelena:#2c9a4b;
+  }
+  .hdr{background:rgba(244,246,248,.86)}
+  .mrizka{opacity:.55}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  html{scroll-behavior:auto}
+}

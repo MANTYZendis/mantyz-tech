@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MANTYZ — things I build</title>
+<meta name="description" content="Audio plugins, web tools and other things I build. Low-level C++ meets the browser.">
+
+<link rel="canonical" href="https://mantyz.dev/">
+
+<meta property="og:title" content="MANTYZ — things I build">
+<meta property="og:description" content="Audio plugins, web tools and other things I build.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mantyz.dev/">
+<meta property="og:image" content="https://mantyz.dev/obr/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#080a0e">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mrizka" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand">MANTYZ</a>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="obal">
+      <p class="prompt"><span class="znak">&gt;</span> whoami</p>
+      <h1>I build things that<br>sit between <em>code</em><br>and <em>sound</em>.</h1>
+      <p class="lead">
+        Audio plugins in C++, web interfaces that talk to them, and whatever
+        else I need and can't find. Most of it starts because something
+        annoyed me at a gig.
+      </p>
+      <div class="fakta">
+        <div class="fakt"><span class="k">Based in</span><span class="v">Czech Republic</span></div>
+        <div class="fakt"><span class="k">Works with</span><span class="v">C++ · JUCE · JS</span></div>
+        <div class="fakt"><span class="k">Also</span><span class="v">mobile DJ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section id="work" class="sekce">
+    <div class="obal">
+      <p class="nadpisek"><span class="znak">&gt;</span> ls ./projects</p>
+      <h2>Work</h2>
+
+      <!-- HLAVNÍ PROJEKT -->
+      <article class="karta karta-hlavni">
+        <div class="karta-hlava">
+          <h3>Remote EQ</h3>
+          <span class="stav stav-hotovo">shipped</span>
+        </div>
+        <p class="karta-shrnuti">
+          A VST3 audio plugin that runs its own web server, so a sound engineer
+          can walk into the crowd with a tablet and tune the room from there.
+        </p>
+
+        <div class="detail">
+          <p>
+            Live sound has an old problem: the mixing desk is at the back of the
+            room, but the room sounds different everywhere else. Remote EQ solves
+            it by putting a 61-band graphic equaliser inside the plugin and
+            exposing it over the local network. Open a browser on any device,
+            and you are holding the desk.
+          </p>
+          <p>
+            The interesting part is the split. Audio runs on a real-time thread
+            that must never block; the network runs on its own threads, so a
+            dropped tablet connection can't interrupt the show. The two talk
+            through lock-free atomics. The web interface is plain JavaScript
+            compiled into the binary itself, so the plugin ships as a single
+            file with nothing to install.
+          </p>
+        </div>
+
+        <ul class="body">
+          <li>61-band graphic EQ at 1/6 octave, zero added latency</li>
+          <li>Embedded HTTP + WebSocket server, hand-rolled handshake</li>
+          <li>Room measurement with a calibration mic, pink noise and live spectrum</li>
+          <li>Automatic feedback detection with parked notch filters</li>
+          <li>Second version splits into two plugins that sync over shared memory</li>
+        </ul>
+
+        <div class="tagy">
+          <span>C++</span><span>JUCE</span><span>VST3</span><span>WebSocket</span><span>JavaScript</span><span>DSP</span>
+        </div>
+        <!-- Až dáš zdroják na GitHub, odkomentuj a doplň adresu:
+        <a class="odkaz" href="" target="_blank" rel="noopener">Source <span aria-hidden="true">→</span></a>
+        -->
+      </article>
+
+      <!-- DALŠÍ PROJEKTY -->
+      <div class="mrizka-karet">
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>Nekrosis</h3>
+            <span class="stav stav-hotovo">live</span>
+          </div>
+          <p>
+            Front-end for a game site. Hand-written, no framework, no template —
+            responsive navigation, light and dark themes, download pages.
+          </p>
+          <div class="tagy"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="odkaz" href="https://web-akrosis.vercel.app/" target="_blank" rel="noopener">
+            Visit <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>Client sites</h3>
+            <span class="stav stav-bezi">ongoing</span>
+          </div>
+          <p>
+            Small business sites and shop customisation, built to load fast on a
+            phone with bad signal. Mostly Czech clients.
+          </p>
+          <div class="tagy"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="odkaz" href="https://mantyz.cz" target="_blank" rel="noopener" hreflang="cs">
+            mantyz.cz <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>MC Panel</h3>
+            <span class="stav stav-bezi">in progress</span>
+          </div>
+          <p>
+            A control panel for a Minecraft server running on your own PC —
+            web console, start and stop from anywhere, no router setup.
+            Paid hosting comfort on hardware you already own.
+          </p>
+          <p class="karta-pozn">
+            The hard part isn't the panel, it's reachability: most home
+            connections sit behind carrier NAT with no public address.
+            Solved with a virtual network and a small local agent.
+          </p>
+          <div class="tagy"><span>Node.js</span><span>WebSocket</span><span>ZeroTier</span><span>Networking</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="sekce sekce-ram">
+    <div class="obal obal-uzky">
+      <p class="nadpisek"><span class="znak">&gt;</span> cat about.txt</p>
+      <h2>About</h2>
+      <p>
+        I work as a mobile DJ, which means I spend weekends running sound,
+        lighting and music at the same time, usually alone. That turns out to be
+        an excellent source of problems worth solving with code.
+      </p>
+      <p>
+        Remote EQ exists because I could not hear what the room sounded like from
+        behind the desk. The tools I write tend to start that way — something
+        that should exist, doesn't, and is small enough to build.
+      </p>
+      <p>
+        I'm most comfortable in the front-end and in C++ audio code, and I'm
+        happy to work anywhere in between.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="sekce">
+    <div class="obal obal-uzky">
+      <p class="nadpisek"><span class="znak">&gt;</span> contact --me</p>
+      <h2>Get in touch</h2>
+      <p class="lead-maly">
+        Questions about a project, an idea, or work — write and I'll reply.
+      </p>
+
+      <!-- DOPLŇ: e-mail, GitHub, případně další odkazy -->
+      <div class="odkazy">
+        <a class="kk" href="mailto:mantyz.djwork@gmail.com">
+          <span class="kk-k">Email</span>
+          <span class="kk-v">mantyz.djwork@gmail.com</span>
+        </a>
+        <a class="kk" href="https://github.com/MANTYZskola" target="_blank" rel="noopener">
+          <span class="kk-k">GitHub</span>
+          <span class="kk-v">MANTYZskola</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pata">
+  <div class="obal">
+    <span class="pata-brand">MANTYZ</span>
+    <span class="pata-txt">things I build</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
