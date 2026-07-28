@@ -7,6 +7,9 @@
 <meta name="description" content="Audio plugins, web tools and other things I build. Low-level C++ meets the browser.">
 
 <link rel="canonical" href="https://mantyz.dev/">
+<link rel="alternate" hreflang="en" href="https://mantyz.dev/">
+<link rel="alternate" hreflang="cs" href="https://mantyz.dev/cz">
+<link rel="alternate" hreflang="x-default" href="https://mantyz.dev/">
 
 <meta property="og:title" content="MANTYZ — things I build">
 <meta property="og:description" content="Audio plugins, web tools and other things I build.">
@@ -38,6 +41,11 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <span class="jazyk">
+      <span class="je">EN</span>
+      <span class="del" aria-hidden="true">/</span>
+      <a href="/cz" hreflang="cs">CZ</a>
+    </span>
   </div>
 </header>
 
@@ -47,7 +55,7 @@
   <section class="hero">
     <div class="obal">
       <p class="prompt"><span class="znak">&gt;</span> whoami</p>
-      <h1>I build things that<br>sit between <em>code</em><br>and <em>sound</em>.</h1>
+      <h1>I build things that<br>sit between <em>code</em><br>and <em>the room</em>.</h1>
       <p class="lead">
         Audio plugins in C++, web interfaces that talk to them, and whatever
         else I need and can't find. Most of it starts because something
@@ -58,6 +66,13 @@
         <div class="fakt"><span class="k">Works with</span><span class="v">C++ · JUCE · JS</span></div>
         <div class="fakt"><span class="k">Also</span><span class="v">mobile DJ</span></div>
       </div>
+
+      <!-- AKTUALIZUJ: jedna věta, klidně jednou za měsíc. Změň i v /cz/index.html. -->
+      <p class="ted">
+        <span class="ted-k">Now</span>
+        <span class="ted-v">Getting Remote EQ into a state where someone other
+        than me can run it, and solving reachability for MC Panel.</span>
+      </p>
     </div>
   </section>
 
@@ -67,7 +82,12 @@
       <p class="nadpisek"><span class="znak">&gt;</span> ls ./projects</p>
       <h2>Work</h2>
 
-      <!-- HLAVNÍ PROJEKT -->
+      <!-- HLAVNÍ PROJEKT
+           POZOR: seznam funkcí níž (61 pásem, 1/6 oktávy, kalibrační mikrofon,
+           detekce zpětné vazby, dva pluginy přes sdílenou paměť) neodpovídá
+           README ani jedné verze projektu — ta mluví o 20 pásmech a detekci
+           zpětné vazby uvádí jako rezervovanou do budoucna. Rozhodni, co platí,
+           a oprav OBĚ jazykové verze naráz (/index.html i /cz/index.html). -->
       <article class="karta karta-hlavni">
         <div class="karta-hlava">
           <h3>Remote EQ</h3>
@@ -80,20 +100,45 @@
 
         <div class="detail">
           <p>
-            Live sound has an old problem: the mixing desk is at the back of the
-            room, but the room sounds different everywhere else. Remote EQ solves
-            it by putting a 61-band graphic equaliser inside the plugin and
-            exposing it over the local network. Open a browser on any device,
-            and you are holding the desk.
+            Live sound has an old problem: the desk is at the back of the room,
+            but the room sounds different everywhere else. Remote EQ moves the
+            controls to wherever you are standing — the equaliser itself stays
+            on the master bus, only the interface travels.
           </p>
-          <p>
-            The interesting part is the split. Audio runs on a real-time thread
-            that must never block; the network runs on its own threads, so a
-            dropped tablet connection can't interrupt the show. The two talk
-            through lock-free atomics. The web interface is plain JavaScript
-            compiled into the binary itself, so the plugin ships as a single
-            file with nothing to install.
-          </p>
+
+          <ul class="rozhodnuti">
+            <li>
+              <span class="r-co">Audio and the network never share a lock</span>
+              <span class="r-proc">They talk through lock-free atomics only, so a
+                dropped Wi-Fi connection can never tug at the sound.</span>
+            </li>
+            <li>
+              <span class="r-co">The web interface compiles into the binary</span>
+              <span class="r-proc">The plugin ships as one file. Nothing to install
+                on the tablet, no second application to keep alive.</span>
+            </li>
+            <li>
+              <span class="r-co">Losing the tablet costs nothing</span>
+              <span class="r-proc">It is a remote control, not part of the signal
+                path. Walk out of range mid-set and the audio doesn't notice.</span>
+            </li>
+            <li>
+              <span class="r-co">The Detail view sits apart from the others</span>
+              <span class="r-proc">Different colour, different corner — so the one
+                view you don't want mid-set can't be hit by accident.</span>
+            </li>
+          </ul>
+
+          <!-- DŮKAZ: až budeš mít snímek pohledu Detail, odkomentuj tenhle blok
+               a nahraj obrázek do /obr/. Jeden snímek řekne o pluginu víc
+               než celá tahle sekce dohromady.
+          <figure class="dukaz">
+            <img src="/obr/remote-eq-detail.png"
+                 alt="Remote EQ Detail view — a draggable EQ curve over a live spectrum"
+                 width="1200" height="750" loading="lazy">
+            <figcaption>Detail view — the curve sits straight over a live spectrum.</figcaption>
+          </figure>
+          -->
         </div>
 
         <ul class="body">
@@ -181,10 +226,6 @@
         Remote EQ exists because I could not hear what the room sounded like from
         behind the desk. The tools I write tend to start that way — something
         that should exist, doesn't, and is small enough to build.
-      </p>
-      <p>
-        I'm most comfortable in the front-end and in C++ audio code, and I'm
-        happy to work anywhere in between.
       </p>
     </div>
   </section>

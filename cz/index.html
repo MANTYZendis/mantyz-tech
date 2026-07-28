@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MANTYZ — co stavím</title>
+<meta name="description" content="Audio pluginy, webové nástroje a další věci, které stavím. Nízkoúrovňové C++ potkává prohlížeč.">
+
+<link rel="canonical" href="https://mantyz.dev/cz">
+<link rel="alternate" hreflang="en" href="https://mantyz.dev/">
+<link rel="alternate" hreflang="cs" href="https://mantyz.dev/cz">
+<link rel="alternate" hreflang="x-default" href="https://mantyz.dev/">
+
+<meta property="og:title" content="MANTYZ — co stavím">
+<meta property="og:description" content="Audio pluginy, webové nástroje a další věci, které stavím.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mantyz.dev/cz">
+<meta property="og:image" content="https://mantyz.dev/obr/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#080a0e">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="mrizka" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand">MANTYZ</a>
+    <nav class="nav">
+      <a href="#work">Práce</a>
+      <a href="#about">O mně</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+    <span class="jazyk">
+      <a href="/" hreflang="en">EN</a>
+      <span class="del" aria-hidden="true">/</span>
+      <span class="je">CZ</span>
+    </span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="obal">
+      <p class="prompt"><span class="znak">&gt;</span> whoami</p>
+      <h1>Stavím věci, které<br>stojí mezi <em>kódem</em><br>a <em>sálem</em>.</h1>
+      <p class="lead">
+        Audio pluginy v C++, webová rozhraní, která s nimi mluví, a všechno
+        ostatní, co potřebuju a nemůžu najít. Většina toho vznikla proto,
+        že mě něco naštvalo na place.
+      </p>
+      <div class="fakta">
+        <div class="fakt"><span class="k">Sídlo</span><span class="v">Česká republika</span></div>
+        <div class="fakt"><span class="k">Pracuju s</span><span class="v">C++ · JUCE · JS</span></div>
+        <div class="fakt"><span class="k">Také</span><span class="v">mobilní DJ</span></div>
+      </div>
+
+      <!-- AKTUALIZUJ: jedna věta, klidně jednou za měsíc. Změň i v /index.html. -->
+      <p class="ted">
+        <span class="ted-k">Teď</span>
+        <span class="ted-v">Dostávám Remote EQ do stavu, kdy ho spustí i někdo
+        jiný než já, a řeším dostupnost MC Panelu zvenku.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PRÁCE ============ -->
+  <section id="work" class="sekce">
+    <div class="obal">
+      <p class="nadpisek"><span class="znak">&gt;</span> ls ./projects</p>
+      <h2>Práce</h2>
+
+      <!-- HLAVNÍ PROJEKT
+           POZOR: seznam funkcí níž je převzatý z anglické verze. README obou
+           verzí projektu mluví o 20 pásmech a detekci zpětné vazby uvádí jako
+           rezervovanou do budoucna. Až se to sjednotí, oprav OBĚ jazykové
+           verze naráz, ať si neodporují. -->
+      <article class="karta karta-hlavni">
+        <div class="karta-hlava">
+          <h3>Remote EQ</h3>
+          <span class="stav stav-hotovo">hotovo</span>
+        </div>
+        <p class="karta-shrnuti">
+          VST3 audio plugin s vlastním webovým serverem, takže zvukař může vejít
+          mezi lidi s tabletem a doladit sál odtamtud.
+        </p>
+
+        <div class="detail">
+          <p>
+            Živý zvuk má starý problém: mixák je vzadu v sále, ale sál zní všude
+            jinak. Remote EQ přesune ovládání tam, kde zrovna stojíte —
+            ekvalizér sám zůstává na master busu, cestuje jenom rozhraní.
+          </p>
+
+          <ul class="rozhodnuti">
+            <li>
+              <span class="r-co">Zvuk a síť spolu nikdy nesdílí zámek</span>
+              <span class="r-proc">Mluví spolu výhradně přes lock-free atomiky,
+                takže výpadek WiFi nemůže zvukem ani škubnout.</span>
+            </li>
+            <li>
+              <span class="r-co">Webové rozhraní se kompiluje do binárky</span>
+              <span class="r-proc">Plugin se dodává jako jediný soubor. Na tablet
+                se nic neinstaluje a nemusí běžet žádná druhá aplikace.</span>
+            </li>
+            <li>
+              <span class="r-co">Ztráta tabletu nic nestojí</span>
+              <span class="r-proc">Je to dálkové ovládání, ne součást cesty zvuku.
+                Odejděte uprostřed setu z dosahu a zvuk si toho nevšimne.</span>
+            </li>
+            <li>
+              <span class="r-co">Detail je schválně stranou od ostatních</span>
+              <span class="r-proc">Jiná barva, jiný roh — aby se jediný pohled,
+                který za setu nechcete, nedal zmáčknout omylem.</span>
+            </li>
+          </ul>
+
+          <!-- DŮKAZ: až budeš mít snímek pohledu Detail, odkomentuj tenhle blok
+               a nahraj obrázek do /obr/. Odkomentuj i v anglické verzi.
+          <figure class="dukaz">
+            <img src="/obr/remote-eq-detail.png"
+                 alt="Remote EQ, pohled Detail — tažitelná křivka EQ nad živým spektrem"
+                 width="1200" height="750" loading="lazy">
+            <figcaption>Pohled Detail — křivka leží rovnou nad živým spektrem.</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <ul class="body">
+          <li>grafický EQ bez přidané latence</li>
+          <li>vestavěný HTTP a WebSocket server, ručně psaný handshake</li>
+          <li>měření sálu kalibračním mikrofonem, růžový šum a živé spektrum</li>
+          <li>automatická detekce zpětné vazby se zaparkovanými notch filtry</li>
+          <li>druhá verze se dělí na dva pluginy, které se synchronizují přes sdílenou paměť</li>
+        </ul>
+
+        <div class="tagy">
+          <span>C++</span><span>JUCE</span><span>VST3</span><span>WebSocket</span><span>JavaScript</span><span>DSP</span>
+        </div>
+        <!-- Až dáš zdroják na GitHub, odkomentuj a doplň adresu:
+        <a class="odkaz" href="" target="_blank" rel="noopener">Zdrojový kód <span aria-hidden="true">→</span></a>
+        -->
+      </article>
+
+      <!-- DALŠÍ PROJEKTY -->
+      <div class="mrizka-karet">
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>Nekrosis</h3>
+            <span class="stav stav-hotovo">běží</span>
+          </div>
+          <p>
+            Front-end pro herní web. Psaný ručně, bez frameworku a bez šablony —
+            responzivní navigace, světlý a tmavý režim, stránky ke stažení.
+          </p>
+          <div class="tagy"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="odkaz" href="https://web-akrosis.vercel.app/" target="_blank" rel="noopener">
+            Otevřít <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>Weby pro klienty</h3>
+            <span class="stav stav-bezi">průběžně</span>
+          </div>
+          <p>
+            Weby pro malé firmy a úpravy e-shopů, stavěné tak, aby se rychle
+            načetly na mobilu se špatným signálem. Většinou čeští klienti.
+          </p>
+          <div class="tagy"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="odkaz" href="https://mantyz.cz" target="_blank" rel="noopener" hreflang="cs">
+            mantyz.cz <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <article class="karta">
+          <div class="karta-hlava">
+            <h3>MC Panel</h3>
+            <span class="stav stav-bezi">rozpracováno</span>
+          </div>
+          <p>
+            Ovládací panel pro Minecraft server běžící na vlastním počítači —
+            webová konzole, start a stop odkudkoliv, bez nastavování routeru.
+            Komfort placeného hostingu na železe, které už máte.
+          </p>
+          <p class="karta-pozn">
+            Těžká část není panel, ale dostupnost: většina domácích přípojek
+            sedí za CGNATem bez veřejné adresy. Řešeno virtuální sítí
+            a malým lokálním agentem.
+          </p>
+          <div class="tagy"><span>Node.js</span><span>WebSocket</span><span>ZeroTier</span><span>Sítě</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ O MNĚ ============ -->
+  <section id="about" class="sekce sekce-ram">
+    <div class="obal obal-uzky">
+      <p class="nadpisek"><span class="znak">&gt;</span> cat about.txt</p>
+      <h2>O mně</h2>
+      <p>
+        Dělám mobilního DJ, což znamená, že o víkendech obsluhuju zvuk, světla
+        a hudbu naráz, obvykle sám. Ukazuje se, že je to vynikající zdroj
+        problémů, které stojí za vyřešení kódem.
+      </p>
+      <p>
+        Remote EQ vznikl proto, že jsem od mixáku neslyšel, jak sál doopravdy
+        zní. Nástroje, které píšu, začínají většinou takhle — něco by mělo
+        existovat, neexistuje, a je to dost malé na to, aby se to dalo postavit.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ KONTAKT ============ -->
+  <section id="contact" class="sekce">
+    <div class="obal obal-uzky">
+      <p class="nadpisek"><span class="znak">&gt;</span> contact --me</p>
+      <h2>Ozvěte se</h2>
+      <p class="lead-maly">
+        Dotaz k projektu, nápad nebo práce — napište a odpovím.
+      </p>
+
+      <!-- DOPLŇ: e-mail, GitHub, případně další odkazy -->
+      <div class="odkazy">
+        <a class="kk" href="mailto:mantyz.websites@gmail.com">
+          <span class="kk-k">E-mail</span>
+          <span class="kk-v">mantyz.websites@gmail.com</span>
+        </a>
+        <a class="kk" href="https://github.com/MANTYZendis" target="_blank" rel="noopener">
+          <span class="kk-k">GitHub</span>
+          <span class="kk-v">MANTYZendis</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pata">
+  <div class="obal">
+    <span class="pata-brand">MANTYZ</span>
+    <span class="pata-txt">co stavím</span>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
