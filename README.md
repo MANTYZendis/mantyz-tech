@@ -31,7 +31,8 @@ po přidání domény v projektu).
 
 ## Co doplnit
 
-- E-mail `mantyz.djwork@gmail.com` v sekci Contact — je to DJ adresa.
-- GitHub odkazuje na organizaci `MANTYZskola`. Zvážit přejmenování.
+- E-mail `mantyz.websites@gmail.com` je zatím gmail. Až bude fungovat
+  Cloudflare Email Routing, přepnout na adresu na doméně.
+- GitHub účet `MANTYZendis` je nový a zatím bez repozitářů.
 - U Remote EQ je v HTML zakomentovaný odkaz na zdrojáky — odkomentovat,
   až bude repozitář veřejný.
